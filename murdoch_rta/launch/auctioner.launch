@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<launch>
+        <arg name="namespace" default="robot"/>
+        <arg name="params" default="$(find murdoch_rta)/config/auctioner.yaml"/>
+        <group ns="$(arg namespace)">
+                <node name="auctioner_node" pkg="murdoch_rta" type="auctioner_node" output="screen">
+                        <rosparam command="load" file="$(arg params)" />
+                </node>
+        </group>
+</launch>

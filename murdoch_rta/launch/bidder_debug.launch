@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<launch>
+        <include file="$(find murdoch_rta)/launch/bidder.launch">
+	    <arg name="params" value="/mnt/Data/ros_ws/tfg_ws/src/murdoch_rta/launch/bidder_debug.yaml"/>
+	    <arg name="namespace" value="ns_bidder"/>
+    </include>
+</launch>

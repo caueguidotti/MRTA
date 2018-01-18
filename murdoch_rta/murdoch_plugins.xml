@@ -1,0 +1,8 @@
+<library path="lib/libmurdoch">
+  <class name="murdoch_rta/default_utility_calculator"
+         type="murdoch_rta::DefaultUtilityCalculator"
+         base_class_type="murdoch_rta::BaseUtilityCalculator">
+    <description>This is the default plugin for murdoch_rta utility calculator
+    </description>
+  </class>
+</library>

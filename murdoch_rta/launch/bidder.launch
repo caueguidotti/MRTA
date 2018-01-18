@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<launch>
+        <arg name="namespace"/>
+        <arg name="params"/>
+        <group ns="$(arg namespace)">
+                <node name="bidder_node" pkg="murdoch_rta" type="bidder_node" output="screen">
+                        <rosparam command="load" file="$(arg params)" />
+                </node>
+        </group>
+</launch>

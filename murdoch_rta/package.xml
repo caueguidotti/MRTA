@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<package>
+  <name>murdoch_rta</name>
+  <version>1.0.0</version>
+  <description>MurdochRTA: A ROS implementation of the MURDOCH architecture for Multi-Robot Task Allocation (MRTA)</description>
+
+  <author email="caueguidotti@unifei.edu.br">Caue Franco Guidotti</author>
+  <maintainer email="caueguidotti@unifei.edu.br">Caue Franco Guidotti</maintainer>
+
+  <license>BSD</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>geometry_msgs</build_depend>
+  <build_depend>roscpp</build_depend>
+  <build_depend>murdoch_rta_msgs</build_depend>
+  <build_depend>pluginlib</build_depend>
+
+  <run_depend>geometry_msgs</run_depend>
+  <run_depend>roscpp</run_depend>
+  <run_depend>murdoch_rta_msgs</run_depend>
+  <run_depend>pluginlib</run_depend>
+
+  <export>
+    <murdoch_rta plugin="${prefix}/murdoch_plugins.xml"/>
+  </export>
+
+</package>
