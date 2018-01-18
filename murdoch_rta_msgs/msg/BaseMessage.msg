@@ -1,0 +1,3 @@
+uint32 robotSenderId
+int32 robotReceiverId
+time messageTime

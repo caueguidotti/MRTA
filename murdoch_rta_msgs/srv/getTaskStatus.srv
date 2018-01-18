@@ -1,0 +1,4 @@
+murdoch_rta_msgs/Task task
+---
+murdoch_rta_msgs/Boolean taskStatus
+

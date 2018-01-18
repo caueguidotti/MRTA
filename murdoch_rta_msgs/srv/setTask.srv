@@ -1,0 +1,5 @@
+murdoch_rta_msgs/Task task
+time taskRenewalBeforeTime
+---
+bool isTaskSet
+
