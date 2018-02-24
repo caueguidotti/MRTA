@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This text aims to explain how to use the *murdoch_rta* package for ROS. I will briefly talk about the [MURDOCH architecture](.#murdoch), describing which sort of problems it tackles. Later, I will explain the [code structure](.#implementation-details) behind this package implementation, pointing out specially the [ROS nodes and topics](.#nodes) implementation, state machines and main classes. Finally, I will guide you through on building a package using the *murdoch_rta* package.
+This text aims to explain how to use the *murdoch_rta* package for ROS. I will briefly talk about the [MURDOCH architecture](#murdoch), describing which sort of problems it tackles. Later, I will explain the [code structure](#implementation-details) behind this package implementation, pointing out specially the [ROS nodes and topics](#nodes) implementation, state machines and main classes. Finally, I will guide you through on building a package using the *murdoch_rta* package.
 
 
 ## MURDOCH
