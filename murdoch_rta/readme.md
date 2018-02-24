@@ -32,7 +32,7 @@ Auctioneer and Bidder nodes communicate extra messages using the '/boolMsgs' top
 The other external node is the Watcher. This node is used to analyze the progress of a task. As can be inferred from the following image, Auctioneer uses a service as the form of communicating with this node of type 'GetTaskStatus'. Auctioneer makes a request of a task status, based on the task unique id (taskUID), the watcher nodes then responds if the task shall continue, stop or if it has been completed.
 
 <p align="center">
-  <img src=https://lh6.googleusercontent.com/HvmF4PXyN2CIZ1lbEPPZa7IWjGPM0EB3anfIX7kj00I5gcaHI7HdLRUjXA2R3bNP68auMkwdAovAZM91Fzmx=w1855-h982 width="40%"><img />
+  <img src="https://lh5.googleusercontent.com/cZQiYYZ1vlqH-Sb3lSPrO1VHCAfVEAXozENsqaRWt-_291LzGmSmbmWZ36Kwpzf0o-YapwYltnmoftDAtk6r=w1855-h982" width="40%"><img />
 </p>
 
 #### Bidder
