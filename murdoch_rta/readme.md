@@ -32,7 +32,7 @@ Auctioneer and Bidder nodes communicate extra messages using the '/boolMsgs' top
 The other external node is the Watcher. This node is used to analyze the progress of a task. As can be inferred from the following image, Auctioneer uses a service as the form of communicating with this node of type 'GetTaskStatus'. Auctioneer makes a request for a task status, based on the task unique id (taskUID), the watcher nodes then responds if the task shall continue, stop or if it has been completed.
 
 <p align="center">
-  <img src="https://github.com/caueguidotti/MRTA/blob/master/imgs/AuctioneerNodeDiagram.png" alt="Auctioneer Node"</>
+  <img src="https://github.com/caueguidotti/MRTA/blob/master/imgs/AuctioneerNodeDiagram.png" alt="Auctioneer Node" width="50%"</>
 </p>
 
 
@@ -42,7 +42,7 @@ As observed on the previous picture, the Bidder node(s) listens to the Auctionee
 The following image illustrates the bidder node and other related nodes and topics. As can be observed, the bidder node also communicates with the acting agent in the system, the Robot. The Bidder will request information about the Robot resources before it starts bidding on an Auction. In addition, if the Bidder is winner on an auction it will send 'setTask' requests to the Robot which responds with a boolean indicating if the task was set.
 
 <p align="center">
-  <img src="https://github.com/caueguidotti/MRTA/blob/master/imgs/BidderRosNodeDiagram.png" alt="Bidder Node"</>
+  <img src="https://github.com/caueguidotti/MRTA/blob/master/imgs/BidderRosNodeDiagram.png" alt="Bidder Node" width="50%"</>
 </p>
 
 ### State Machines
@@ -61,7 +61,7 @@ This state machine is initiated for every task message input into the system, so
 The image bellow provides an illustration of the Auctioneer state machine, containing the states and the transitions.
 
 <p align="center">
-  <img src="https://github.com/caueguidotti/MRTA/blob/master/imgs/AuctioneerStateMachine.png" alt="Auctioneer State Machine"</>
+  <img src="https://github.com/caueguidotti/MRTA/blob/master/imgs/AuctioneerStateMachine.png" alt="Auctioneer State Machine" width="50%"</>
 </p>
 
 #### Bidder
@@ -76,7 +76,7 @@ Unlike the auctioneer state machine, the bidder only initializes one state machi
 The image bellow provides an illustration of the Bidder state machine, containing the states and the transitions.
 
 <p align="center">
-  <img src="https://github.com/caueguidotti/MRTA/blob/master/imgs/BidderStateMachine.png" alt="Bidder State Machine"</>
+  <img src="https://github.com/caueguidotti/MRTA/blob/master/imgs/BidderStateMachine.png" alt="Bidder State Machine" width="50%"</>
 </p>
 
 [//]: # (Links References)
