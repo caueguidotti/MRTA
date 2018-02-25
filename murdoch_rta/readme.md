@@ -31,7 +31,9 @@ Auctioneer and Bidder nodes communicate extra messages using the '/boolMsgs' top
 
 The other external node is the Watcher. This node is used to analyze the progress of a task. As can be inferred from the following image, Auctioneer uses a service as the form of communicating with this node of type 'GetTaskStatus'. Auctioneer makes a request for a task status, based on the task unique id (taskUID), the watcher nodes then responds if the task shall continue, stop or if it has been completed.
 
-![Auctioneer Node](https://github.com/caueguidotti/MRTA/blob/master/imgs/AuctioneerNodeDiagram.png "Auctioneer Node")
+<p align="center">
+  <img src="https://github.com/caueguidotti/MRTA/blob/master/imgs/AuctioneerNodeDiagram.png" alt="Auctioneer Node"</>
+</p>
 
 
 #### Bidder
@@ -39,27 +41,47 @@ As observed on the previous picture, the Bidder node(s) listens to the Auctionee
 
 The following image illustrates the bidder node and other related nodes and topics. As can be observed, the bidder node also communicates with the acting agent in the system, the Robot. The Bidder will request information about the Robot resources before it starts bidding on an Auction. In addition, if the Bidder is winner on an auction it will send 'setTask' requests to the Robot which responds with a boolean indicating if the task was set.
 
-![Bidder Node](https://github.com/caueguidotti/MRTA/blob/master/imgs/BidderRosNodeDiagram.png "Bidder Node")
+<p align="center">
+  <img src="https://github.com/caueguidotti/MRTA/blob/master/imgs/BidderRosNodeDiagram.png" alt="Bidder Node"</>
+</p>
 
 ### State Machines
 MURDOCH defines very clear behavior for each of its agents (Bidder and Auctioneer), and those behaviors are quite sequentially, for this reason, I chose to implement each agent algorithm using [state machines][3-ref].
 
-#### Auctioneer State machine
+#### Auctioneer
 Auctioneer has five distinguish states: Initial, Processing Task, Auctioning Task, Waiting Acknowledgment and Monitoring Task. Each of these states are briefly described below.
 * Initial: Upon the state machine creation, Initial state is called for starting a preprocessing stage of the state machine. Currently, its only role is to [transfer ownership][4-ref] of the task from the Auctioneer class to the State Machine Controller class.
 * Processing Task: This state performs the auction message creation and publishes it.
-* Auctioning Task: This state monitors incoming bids and when the auction should finishes. At the ending of the auction, if any bid was received, I choose the highest bid and send to the respective bidder an 'WonAuction' 'BoolMsg'.
-* Waiting Acknowledgment: The sole purpose of this state is to wait for a response from the auction winning bidder. This is done so the auctioneer is aware of a disconnection of the bidder and to act on it accordingly. A maximum timeout is used here to add some process and network delay tolerance.
+* Auctioning Task: This state monitors incoming bids and when the auction should finish. At the ending of the auction, if any bid was received, I choose the highest bid and send to the respective bidder a 'WonAuction' 'BoolMsg'.
+* Waiting Acknowledgment: The sole purpose of this state is to wait for a response from the auction winning bidder. This is done so the auctioneer is aware of a disconnection of the bidder and to act on it accordingly. A maximum timeout is used here to add some process or network delay tolerance.
 * Monitoring Task: This is the state for contacting the Watcher node and to request the task progress. A timeout is also used here to wait for the Watcher response. A task is said to be renewed when the watcher responds with a 'BoolMsg' containing a 'TaskContinuing' message, otherwise ('TaskCancelled' or 'TaskCompleted') represents that the auctioneer monitoring behavior should cease.
 
 This state machine is initiated for every task message input into the system, so the Auctioneer instantiates concurrent state machines.
 
 The image bellow provides an illustration of the Auctioneer state machine, containing the states and the transitions.
 
-![Auctioneer State Machine](https://github.com/caueguidotti/MRTA/blob/master/imgs/AuctioneerStateMachine.png "Auctioneer State Machine")
+<p align="center">
+  <img src="https://github.com/caueguidotti/MRTA/blob/master/imgs/AuctioneerStateMachine.png" alt="Auctioneer State Machine"</>
+</p>
+
+#### Bidder
+Bidder has four distinguish states: Processing Auction, Waiting Auction Result, Renewing Task, Executing Task. Each of these states are briefly described below.
+* Processing Auction: This is the first state engaged when a new auction arrives. Its role is to check if the robot can participate in an auction and if so, also place a bid in that auction.
+* Waiting Auction Result: This state waits for the end of an auction that the bidder participated. When the auction finishes it checks if the bidder won the auction and if so, the state machine transitions to the next state.
+* Renewing Task: In this state, the bidder attempts to contact the Robot an allocates a task, if it is successful it will send an acknowledge message to the auctioneer informing that it can proceed to the Monitoring Task state.
+* Executing Task: This is the state that the bidder waits to receive a 'Renew Task' message from the auctioneer. If it receives such message, it then goes back to the renewing task state, finishing the cycle.
+
+Unlike the auctioneer state machine, the bidder only initializes one state machine, since the robots in Murdoch executes one task at a time.
+
+The image bellow provides an illustration of the Bidder state machine, containing the states and the transitions.
+
+<p align="center">
+  <img src="https://github.com/caueguidotti/MRTA/blob/master/imgs/BidderStateMachine.png" alt="Bidder State Machine"</>
+</p>
 
 [//]: # (Links References)
 [1-ref]: http://robotics.stanford.edu/~gerkey/research/final_papers/mrta-taxonomy.pdf
 [2-ref]: http://robotics.stanford.edu/~gerkey/research/final_papers/diss.pdf
 [3-ref]: https://en.wikipedia.org/wiki/State_pattern
 [4-ref]: https://en.wikipedia.org/wiki/Smart_pointer
+
